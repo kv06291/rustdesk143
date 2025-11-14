@@ -63,10 +63,10 @@ final isWebOnMacOs = isWebOnMacOS_;
 var isMobile = isAndroid || isIOS;
 var version = '';
 int androidVersion = 0;
-//final bool isIncomingOnly_EN = false;
-//final bool isDisableSettings_EN = false;
-final bool isIncomingOnly_EN = true;
-final bool isDisableSettings_EN = true;
+final bool isIncomingOnly_EN = false;
+final bool isDisableSettings_EN = false;
+//final bool isIncomingOnly_EN = true;
+//final bool isDisableSettings_EN = true;
 // Only used on Linux.
 // `windowManager.setResizable(false)` will reset the window size to the default size on Linux.
 // https://stackoverflow.com/questions/8193613/gtk-window-resize-disable-without-going-back-to-default
