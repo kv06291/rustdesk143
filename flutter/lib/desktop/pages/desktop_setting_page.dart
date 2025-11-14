@@ -66,14 +66,14 @@ class DesktopSettingPage extends StatefulWidget {
     SettingsTabKey.general,
     if (!isWeb &&
         !bind.isOutgoingOnly() &&
-        !bind.isDisableSettings() &&
+        !isDisableSettings_EN &&
         bind.mainGetBuildinOption(key: kOptionHideSecuritySetting) != 'Y')
       SettingsTabKey.safety,
-    if (!bind.isDisableSettings() &&
+    if (!isDisableSettings_EN &&
         bind.mainGetBuildinOption(key: kOptionHideNetworkSetting) != 'Y')
       SettingsTabKey.network,
-    if (!bind.isIncomingOnly()) SettingsTabKey.display,
-    if (!isWeb && !bind.isIncomingOnly() && bind.pluginFeatureIsEnabled())
+    if (!isIncomingOnly_EN) SettingsTabKey.display,
+    if (!isWeb && !isIncomingOnly_EN && bind.pluginFeatureIsEnabled())
       SettingsTabKey.plugin,
     if (!bind.isDisableAccount()) SettingsTabKey.account,
     if (isWindows &&
@@ -475,13 +475,13 @@ class _GeneralState extends State<_General> {
     final showAutoUpdate =
         isWindows && bind.mainIsInstalled() && !bind.isCustomClient();
     final children = <Widget>[
-      if (!isWeb && !bind.isIncomingOnly())
+      if (!isWeb && !isIncomingOnly_EN)
         _OptionCheckBox(context, 'Confirm before closing multiple tabs',
             kOptionEnableConfirmClosingTabs,
             isServer: false),
       _OptionCheckBox(context, 'Adaptive bitrate', kOptionEnableAbr),
       if (!isWeb) wallpaper(),
-      if (!isWeb && !bind.isIncomingOnly()) ...[
+      if (!isWeb && !isIncomingOnly_EN) ...[
         _OptionCheckBox(
           context,
           'Open connection in new tab',
@@ -540,7 +540,7 @@ class _GeneralState extends State<_General> {
             'Capture screen using DirectX',
             kOptionDirectxCapture,
           ),
-        if (!bind.isIncomingOnly()) ...[
+        if (!isIncomingOnly_EN) ...[
           _OptionCheckBox(
             context,
             'Enable UDP hole punching',
@@ -668,7 +668,7 @@ class _GeneralState extends State<_General> {
         if (!bind.isOutgoingOnly())
           _OptionCheckBox(context, 'Automatically record incoming sessions',
               kOptionAllowAutoRecordIncoming),
-        if (!bind.isIncomingOnly())
+        if (!isIncomingOnly_EN)
           _OptionCheckBox(context, 'Automatically record outgoing sessions',
               kOptionAllowAutoRecordOutgoing,
               isServer: false),
@@ -676,7 +676,7 @@ class _GeneralState extends State<_General> {
           Row(
             children: [
               Text(
-                  '${translate(bind.isIncomingOnly() ? "Directory" : "Incoming")}:'),
+                  '${translate(isIncomingOnly_EN ? "Directory" : "Incoming")}:'),
               Expanded(
                 child: GestureDetector(
                     onTap: root_dir_exists
@@ -693,7 +693,7 @@ class _GeneralState extends State<_General> {
               ),
             ],
           ).marginOnly(left: _kContentHMargin),
-        if (!(showRootDir && bind.isIncomingOnly()))
+        if (!(showRootDir && isIncomingOnly_EN))
           Row(
             children: [
               Text(

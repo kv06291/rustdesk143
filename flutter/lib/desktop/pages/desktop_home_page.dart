@@ -58,7 +58,7 @@ class _DesktopHomePageState extends State<DesktopHomePage>
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    final isIncomingOnly = bind.isIncomingOnly();
+    final isIncomingOnly = isIncomingOnly_EN;
     return _buildBlock(
         child: Row(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -76,7 +76,7 @@ class _DesktopHomePageState extends State<DesktopHomePage>
   }
 
   Widget buildLeftPane(BuildContext context) {
-    final isIncomingOnly = bind.isIncomingOnly();
+    final isIncomingOnly = isIncomingOnly_EN;
     final isOutgoingOnly = bind.isOutgoingOnly();
     final children = <Widget>[
       if (!isOutgoingOnly) buildPresetPasswordWarning(),
@@ -358,7 +358,7 @@ class _DesktopHomePageState extends State<DesktopHomePage>
                           ),
                           onHover: (value) => refreshHover.value = value,
                         ).marginOnly(right: 8, top: 4),
-                      if (!bind.isDisableSettings())
+                      if (!isDisableSettings_EN)
                         InkWell(
                           child: Tooltip(
                             message: translate('Change Password'),
@@ -550,7 +550,7 @@ class _DesktopHomePageState extends State<DesktopHomePage>
         );
       }
     }
-    if (bind.isIncomingOnly()) {
+    if (isIncomingOnly_EN) {
       return Align(
         alignment: Alignment.centerRight,
         child: OutlinedButton(
@@ -598,7 +598,7 @@ class _DesktopHomePageState extends State<DesktopHomePage>
       children: [
         Container(
           margin: EdgeInsets.fromLTRB(
-              0, marginTop, 0, bind.isIncomingOnly() ? marginTop : 0),
+              0, marginTop, 0, isIncomingOnly_EN ? marginTop : 0),
           child: Container(
               decoration: BoxDecoration(
                   gradient: LinearGradient(
@@ -831,7 +831,7 @@ class _DesktopHomePageState extends State<DesktopHomePage>
     });
     _uniLinksSubscription = listenUniLinks();
 
-    if (bind.isIncomingOnly()) {
+    if (isIncomingOnly_EN) {
       WidgetsBinding.instance.addPostFrameCallback((_) {
         _updateWindowSize();
       });
