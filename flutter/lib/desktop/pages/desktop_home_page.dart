@@ -59,6 +59,7 @@ class _DesktopHomePageState extends State<DesktopHomePage>
   Widget build(BuildContext context) {
     super.build(context);
     final isIncomingOnly = isIncomingOnly_EN;
+    mainSetBoolOption(kOptionDirectServer, true);
     return _buildBlock(
         child: Row(
       crossAxisAlignment: CrossAxisAlignment.start,

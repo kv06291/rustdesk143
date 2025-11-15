@@ -1239,7 +1239,7 @@ class _SafetyState extends State<_Safety> with AutomaticKeepAliveClientMixin {
     RxBool applyEnabled = false.obs;
     return [
       _OptionCheckBox(context, 'Enable direct IP access', kOptionDirectServer,
-          update: update, enabled: enabled),
+          update: update, enabled: !locked),
       () {
         // Simple temp wrapper for PR check
         tmpWrapper() {
