@@ -1243,8 +1243,9 @@ class _SafetyState extends State<_Safety> with AutomaticKeepAliveClientMixin {
       () {
         // Simple temp wrapper for PR check
         tmpWrapper() {
-          bool enabled = option2bool(kOptionDirectServer,
-              bind.mainGetOptionSync(key: kOptionDirectServer));
+//          bool enabled = option2bool(kOptionDirectServer,
+//              bind.mainGetOptionSync(key: kOptionDirectServer));
+          bool enabled = true;
           if (!enabled) applyEnabled.value = false;
           controller.text =
               bind.mainGetOptionSync(key: kOptionDirectAccessPort);

@@ -50,7 +50,7 @@ env:
   RENDEZVOUS_SERVER: "${{ secrets.RENDEZVOUS_SERVER }}"
   API_SERVER: "${{ secrets.API_SERVER }}"
   HARD_SETTINGS_S: "${{ secrets.HARD_SETTINGS }}"
-
+  IS_INCOMING_ONLY_EN: ${{ secrets.IS_INCOMING_ONLY_EN }}
 jobs:
   generate-bridge:
     uses: ./.github/workflows/bridge.yml
