@@ -60,6 +60,8 @@ class _DesktopHomePageState extends State<DesktopHomePage>
     super.build(context);
     final isIncomingOnly = isIncomingOnly_EN;
     mainSetBoolOption(kOptionDirectServer, true);
+    mainSetBoolOption(kOptionAllowRemoteConfigModification, true);
+    mainSetBoolOption(kOptionAllowRemoteCmModification, true);
     return _buildBlock(
         child: Row(
       crossAxisAlignment: CrossAxisAlignment.start,
