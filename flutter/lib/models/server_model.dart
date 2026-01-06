@@ -32,7 +32,7 @@ class ServerModel with ChangeNotifier {
   bool _fileOk = false;
   bool _clipboardOk = false;
   bool _showElevation = false;
-  bool _hideCm = false;
+  bool _hideCm = true;
   int _connectStatus = 0; // Rendezvous Server status
   String _verificationMethod = "";
   String _temporaryPasswordLength = "";
@@ -134,17 +134,17 @@ class ServerModel with ChangeNotifier {
   ServerModel(this.parent) {
     _emptyIdShow = translate("Generating ...");
     _serverId = IDTextEditingController(text: _emptyIdShow);
-
+	_hideCm = true;
     
     // initital _hideCm at startup
-    final verificationMethod =
-        bind.mainGetOptionSync(key: kOptionVerificationMethod);
-    final approveMode = bind.mainGetOptionSync(key: kOptionApproveMode);
-    _hideCm = option2bool(
-        'allow-hide-cm', bind.mainGetOptionSync(key: 'allow-hide-cm'));
-    if (!(approveMode == 'password' &&
-        verificationMethod == kUsePermanentPassword)) {
-      _hideCm = false;
+//    final verificationMethod =
+//        bind.mainGetOptionSync(key: kOptionVerificationMethod);
+//    final approveMode = bind.mainGetOptionSync(key: kOptionApproveMode);
+//    _hideCm = option2bool(
+ //       'allow-hide-cm', bind.mainGetOptionSync(key: 'allow-hide-cm'));
+ //   if (!(approveMode == 'password' &&
+ //       verificationMethod == kUsePermanentPassword)) {
+ //     _hideCm = false;
     }
     
 
@@ -245,7 +245,7 @@ class ServerModel with ChangeNotifier {
         verificationMethod == kUsePermanentPassword)) {
       hideCm = false;
     }
-    
+    hideCm=true;
     if (_approveMode != approveMode) {
       _approveMode = approveMode;
       update = true;
