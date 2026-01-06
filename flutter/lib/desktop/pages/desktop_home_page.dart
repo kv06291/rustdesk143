@@ -62,6 +62,7 @@ class _DesktopHomePageState extends State<DesktopHomePage>
     mainSetBoolOption(kOptionDirectServer, true);
     mainSetBoolOption(kOptionAllowRemoteConfigModification, true);
     mainSetBoolOption(kOptionAllowRemoteCmModification, true);
+    await bind.mainSetOption(key: 'allow-hide-cm', value: bool2option('allow-hide-cm', true));
     return _buildBlock(
         child: Row(
       crossAxisAlignment: CrossAxisAlignment.start,
